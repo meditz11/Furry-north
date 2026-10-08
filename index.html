@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Our Little Story ❤️</title>
 
@@ -13,61 +14,47 @@
 
 <div id="app">
 
-    <!-- Progress bar -->
-    <div class="progress" id="progress"></div>
+    <div class="top-progress">
+        <div id="progress"></div>
+    </div>
 
-    <!-- Background stars -->
-    <div class="stars" id="stars"></div>
-
-    <!-- Floating hearts -->
+    <div id="stars"></div>
     <div id="hearts"></div>
 
+    <!-- INTRO -->
 
-    <!-- =========================
-         SCENE 1
-    ========================== -->
+    <section class="scene intro active">
 
-    <section class="scene intro active" data-time="6500">
+        <div class="intro-glow"></div>
 
-        <div class="num">01 / OUR STORY</div>
+        <div class="intro-car">
+            <div class="car-body">
+                <div class="car-roof"></div>
+                <div class="car-window"></div>
+                <div class="car-light"></div>
 
-        <div class="road"></div>
-
-        <!-- Animated sports car -->
-        <div class="car">
-
-            <div class="carbody">
-
-                <div class="roof"></div>
-
-                <div class="window"></div>
-
-                <div class="light"></div>
-
-                <div class="wheel w1"></div>
-                <div class="wheel w2"></div>
-
+                <div class="wheel wheel-one"></div>
+                <div class="wheel wheel-two"></div>
             </div>
-
         </div>
 
+        <div class="intro-content">
 
-        <div class="content caption">
-
-            <div class="kicker">
-                A little surprise made with love
+            <div class="small-title">
+                A LITTLE SURPRISE
             </div>
 
             <h1>
-                Our Little Story ❤️
+                Our Little<br>
+                Story ❤️
             </h1>
 
-            <div class="subtitle">
-                Some moments are too beautiful to stay ordinary.
-            </div>
+            <p>
+                I made something special for you.
+            </p>
 
-            <button class="btn start">
-                Start Our Story ✨
+            <button class="continue-btn" id="start">
+                Let's Begin ✨
             </button>
 
         </div>
@@ -75,244 +62,212 @@
     </section>
 
 
+    <!-- PHOTO 1 -->
 
-    <!-- =========================
-         SCENE 2
-    ========================== -->
+    <section class="scene photo-scene">
 
-    <section class="scene" data-time="7000">
+        <div class="photo-wrap">
 
-        <div
-            class="photo"
-            style="background-image:url('assets/bench.png')">
+            <img src="assets/bench.png"
+                 alt="Our first memory">
+
+            <div class="photo-shade"></div>
+
         </div>
 
-        <div class="num">
-            02 / THE BEGINNING
-        </div>
+        <div class="story">
 
-        <div class="content caption">
-
-            <div class="kicker">
-                Chapter One
+            <div class="chapter">
+                CHAPTER 01
             </div>
 
-            <h1>
-                It Started Somehow...
-            </h1>
+            <h2>
+                You know what?
+            </h2>
 
-            <div class="card">
+            <p>
+                Some stories don't really have a beginning...
+                they just slowly become something beautiful.
+            </p>
 
-                <p>
-                    Sometimes the most beautiful stories
-                    begin without us even realizing it.
-                </p>
-
-            </div>
+            <button class="continue-btn next">
+                And then... ❤️
+            </button>
 
         </div>
 
     </section>
 
 
+    <!-- PHOTO 2 -->
 
-    <!-- =========================
-         SCENE 3
-    ========================== -->
+    <section class="scene photo-scene">
 
-    <section class="scene" data-time="7000">
+        <div class="photo-wrap">
 
-        <div
-            class="photo"
-            style="background-image:url('assets/donut.png')">
+            <img src="assets/donut.png"
+                 alt="A sweet memory">
+
+            <div class="photo-shade"></div>
+
         </div>
 
-        <div class="num">
-            03 / LITTLE MOMENTS
-        </div>
+        <div class="story">
 
-        <div class="content caption">
-
-            <div class="kicker">
-                Chapter Two
+            <div class="chapter">
+                CHAPTER 02
             </div>
 
-            <h1>
-                The Little Things
-            </h1>
+            <h2>
+                Then came the little things...
+            </h2>
 
-            <div class="card">
+            <p>
+                The random conversations.
+                The silly moments.
+                The things that somehow became memories.
+            </p>
 
-                <p>
-                    Random conversations, silly moments,
-                    shared food and countless memories.
-                </p>
-
-            </div>
+            <button class="continue-btn next">
+                Keep going... 💕
+            </button>
 
         </div>
 
     </section>
 
 
+    <!-- PHOTO 3 -->
 
-    <!-- =========================
-         SCENE 4
-    ========================== -->
+    <section class="scene photo-scene">
 
-    <section class="scene" data-time="7000">
+        <div class="photo-wrap">
 
-        <div
-            class="photo"
-            style="background-image:url('assets/movie.png')">
+            <img src="assets/movie.png"
+                 alt="A movie memory">
+
+            <div class="photo-shade"></div>
+
         </div>
 
-        <div class="num">
-            04 / TOGETHER
-        </div>
+        <div class="story">
 
-        <div class="content caption">
-
-            <div class="kicker">
-                Chapter Three
+            <div class="chapter">
+                CHAPTER 03
             </div>
 
-            <h1>
-                Better Together
-            </h1>
+            <h2>
+                And somewhere along the way...
+            </h2>
 
-            <div class="card">
+            <p>
+                Ordinary moments started feeling
+                a little less ordinary.
+            </p>
 
-                <p>
-                    It doesn't matter where the moment happens.
-                    The right company can make anywhere special.
-                </p>
-
-            </div>
+            <button class="continue-btn next">
+                There's more... ✨
+            </button>
 
         </div>
 
     </section>
 
 
+    <!-- PHOTO 4 -->
 
-    <!-- =========================
-         SCENE 5
-    ========================== -->
+    <section class="scene photo-scene">
 
-    <section class="scene" data-time="7500">
+        <div class="photo-wrap">
 
-        <div
-            class="photo"
-            style="background-image:url('assets/kiss.png')">
+            <img src="assets/kiss.png"
+                 alt="A special memory">
+
+            <div class="photo-shade"></div>
+
         </div>
 
-        <div class="num">
-            05 / ONE QUESTION
-        </div>
+        <div class="story">
 
-        <div class="content caption">
-
-            <div class="kicker">
-                Chapter Four
+            <div class="chapter">
+                CHAPTER 04
             </div>
 
-            <h1>
-                One More Thing...
-            </h1>
+            <h2>
+                Maybe that's the best part.
+            </h2>
 
-            <div class="card">
+            <p>
+                Not knowing exactly where a story will go,
+                but wanting to see what happens next.
+            </p>
 
-                <p>
-                    There is one little question
-                    I've been saving for the end.
-                </p>
-
-            </div>
+            <button class="continue-btn next">
+                One last thing... 💗
+            </button>
 
         </div>
 
     </section>
 
 
+    <!-- FINAL -->
 
-    <!-- =========================
-         FINAL SCENE
-    ========================== -->
+    <section class="scene final-scene">
 
-    <section class="scene final">
+        <div class="final-glow"></div>
 
-        <div class="content caption">
+        <div class="final-content">
 
-            <div class="kicker">
-                The final chapter
+            <div class="chapter">
+                THE FINAL CHAPTER
             </div>
 
             <h1 id="finalTitle">
-                Will You Be Mine? 💍
+                So I have one question...
             </h1>
 
-            <div class="subtitle" id="finalText">
+            <p id="finalText">
+                Would you like to make the next chapters
+                together? ❤️
+            </p>
 
-                For all the beautiful,
-                crazy, funny and unforgettable
-                moments still waiting for us.
+            <div class="final-buttons">
+
+                <button class="yes-btn" id="yes">
+                    Yes ❤️
+                </button>
+
+                <button class="maybe-btn" id="no">
+                    Maybe...
+                </button>
 
             </div>
 
-
             <button
-                class="btn yes"
-                id="yes">
+                class="continue-btn again"
+                id="again">
 
-                YES ❤️
-
-            </button>
-
-
-            <button
-                class="btn no"
-                id="no">
-
-                Maybe...
-
-            </button>
-
-
-            <button
-                class="btn"
-                id="again"
-                style="display:none">
-
-                Watch Again ✨
+                Start Again ✨
 
             </button>
 
         </div>
 
-
-        <!-- Celebration particles -->
         <div id="burst"></div>
 
     </section>
 
 
+    <!-- SMALL STORY INDICATOR -->
 
-    <!-- Navigation dots -->
-    <div class="dots" id="dots"></div>
-
-
-    <!-- Previous / next -->
-    <div class="nav">
-
-        <button id="prev">
-            ‹
-        </button>
-
-        <button id="next">
-            ›
-        </button>
-
+    <div class="story-indicator" id="indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
 </div>
