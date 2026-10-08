@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    background: #08050e;
+    color: white;
+}
+
+#app {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #08050e;
+}
+
+
+/* SCENES */
+
+.scene {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.04);
+
+    transition:
+        opacity .9s ease,
+        transform 1.2s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+/* PHOTOS */
+
+.photo {
+    position: absolute;
+    inset: 0;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.photo::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0002 10%,
+            #0003 45%,
+            #000c
+        );
+}
+
+.scene.active .photo {
+    animation: zoomPhoto 12s ease both;
+}
+
+@keyframes zoomPhoto {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* CONTENT */
+
+.content {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 50%;
+    bottom: 9%;
+
+    transform: translateX(-50%);
+
+    width: min(900px, 90%);
+
+    text-align: center;
+}
+
+.kicker {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: .85;
+}
+
+h1 {
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(50px, 9vw, 100px);
+
+    line-height: 1;
+
+    margin: 12px 0;
+
+    text-shadow:
+        0 5px 25px #000;
+}
+
+.subtitle {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(21px, 3vw, 31px);
+
+    line-height: 1.2;
+
+    text-shadow:
+        0 3px 15px #000;
+}
+
+
+/* CARD */
+
+.card {
+    background: #08040dcc;
+
+    border:
+        1px solid #ffffff22;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 20px 60px #0009;
+}
+
+.card p {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    margin: 0;
+}
+
+
+/* BUTTONS */
+
+.btn {
+    border: 0;
+
+    border-radius: 999px;
+
+    padding: 14px 28px;
+
+    margin-top: 22px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d98,
+            #813bff
+        );
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px #ff3d963d;
+
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 40px #ff3d9688;
+}
+
+
+/* INTRO */
+
+.intro {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #551449,
+            #090611 65%
+        );
+}
+
+
+/* STARS */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    animation:
+        twinkle 1.8s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    to {
+        opacity: .15;
+        transform: scale(.4);
+    }
+
+}
+
+
+/* ROAD */
+
+.road {
+    position: absolute;
+
+    bottom: -20%;
+    left: -10%;
+
+    width: 120%;
+    height: 45%;
+
+    background:
+        linear-gradient(
+            #111119,
+            #030306
+        );
+
+    transform:
+        perspective(500px)
+        rotateX(55deg);
+
+    border-top:
+        1px solid #ffffff22;
+}
+
+.road::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 12px;
+    height: 150%;
+
+    background:
+        repeating-linear-gradient(
+            white 0 45px,
+            transparent 45px 100px
+        );
+
+    opacity: .16;
+}
+
+
+/* CAR */
+
+.car {
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 27%;
+    left: -65%;
+
+    width: min(560px, 75vw);
+    height: 130px;
+
+    animation:
+        drive 4.5s
+        cubic-bezier(.12,.78,.2,1)
+        .2s forwards;
+}
+
+.carbody {
+    position: absolute;
+
+    left: 5%;
+    bottom: 20px;
+
+    width: 90%;
+    height: 100px;
+
+    border-radius:
+        70px 110px 30px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff649c,
+            #a20f55 55%,
+            #25031a
+        );
+
+    box-shadow:
+        inset 0 3px 4px #fff8,
+        0 20px 35px #000;
+}
+
+.roof {
+    position: absolute;
+
+    left: 28%;
+    top: -52px;
+
+    width: 40%;
+    height: 65px;
+
+    border-radius:
+        80px 90px 0 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #260621,
+            #080810
+        );
+
+    border:
+        2px solid #ffffff22;
+}
+
+.window {
+    position: absolute;
+
+    left: 34%;
+    top: -42px;
+
+    width: 14%;
+    height: 43px;
+
+    background: #1c2738aa;
+
+    transform: skewX(-20deg);
+
+    border:
+        1px solid #ffffff33;
+}
+
+.light {
+    position: absolute;
+
+    right: 8%;
+    top: 35px;
+
+    width: 65px;
+    height: 15px;
+
+    background: #dff;
+
+    filter:
+        drop-shadow(
+            0 0 15px #bff
+        );
+}
+
+
+/* WHEELS */
+
+.wheel {
+    position: absolute;
+
+    bottom: -17px;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #777 0 15%,
+            #111 16% 55%,
+            #333 56% 60%,
+            #050505 61%
+        );
+
+    border:
+        5px solid #050505;
+
+    animation:
+        spin .6s linear infinite;
+}
+
+.w1 {
+    left: 18%;
+}
+
+.w2 {
+    right: 13%;
+}
+
+@keyframes drive {
+
+    0% {
+        left: -65%;
+        transform: scale(.65);
+    }
+
+    70% {
+        left: 57%;
+        transform: scale(1);
+    }
+
+    100% {
+        left: 50%;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* HEARTS */
+
+#hearts {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+
+    font-size: 24px;
+
+    bottom: -30px;
+
+    animation:
+        float 5s linear forwards;
+}
+
+@keyframes float {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(0)
+            scale(.5);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-110vh)
+            rotate(25deg)
+            scale(1.2);
+    }
+
+}
+
+
+/* CAPTION */
+
+.scene.active .caption {
+    animation:
+        caption .9s .25s both;
+}
+
+@keyframes caption {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* NUMBER */
+
+.num {
+    position: absolute;
+
+    z-index: 10;
+
+    top: 25px;
+    left: 25px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: .7;
+}
+
+
+/* PROGRESS */
+
+.progress {
+    position: absolute;
+
+    z-index: 50;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 4px;
+
+    background: #ff579c;
+
+    box-shadow:
+        0 0 15px #ff579c;
+}
+
+
+/* NAVIGATION */
+
+.nav {
+    position: absolute;
+
+    z-index: 50;
+
+    right: 22px;
+    bottom: 22px;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.nav button {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid #ffffff33;
+
+    background: #09050dbd;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.nav button:hover {
+    transform: scale(1.1);
+
+    background: #ffffff22;
+}
+
+
+/* DOTS */
+
+.dots {
+    position: absolute;
+
+    z-index: 50;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 6px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+
+    background: #ffffff44;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.dot.active {
+    width: 24px;
+
+    background: white;
+}
+
+
+/* FINAL */
+
+.final {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #5b174f,
+            #090611 70%
+        );
+}
+
+.final .content {
+    bottom: 15%;
+}
+
+.yes {
+    font-size: 18px;
+
+    padding:
+        16px 40px;
+}
+
+.no {
+    background: #ffffff10;
+
+    border:
+        1px solid #ffffff44;
+
+    margin-left: 8px;
+}
+
+
+/* CELEBRATION */
+
+#burst {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+.confetti {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    font-size: 25px;
+
+    animation:
+        burst 2.7s
+        cubic-bezier(.1,.8,.2,1)
+        forwards;
+}
+
+@keyframes burst {
+
+    0% {
+        transform:
+            translate(-50%,-50%)
+            scale(.2);
+
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r));
+
+        opacity: 0;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .content {
+        bottom: 10%;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .card p {
+        font-size: 21px;
+    }
+
+    .car {
+        bottom: 31%;
+    }
+
+    .nav {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .dots {
+        bottom: 25px;
+    }
+
+    h1 {
+        font-size:
+            clamp(
+                48px,
+                15vw,
+                75px
+            );
+    }
+
+}
