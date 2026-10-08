@@ -1,120 +1,98 @@
-const scenes = [...document.querySelectorAll(".scene")];
-
-const dots = document.getElementById("dots");
-
-const progress = document.getElementById("progress");
-
-let currentScene = 0;
-
-let timer;
-
-
-
-/* =========================
-   CREATE NAVIGATION DOTS
-========================= */
-
-scenes.forEach((scene, index) => {
-
-    const dot = document.createElement("span");
-
-    dot.className = "dot";
-
-    if (index === 0) {
-        dot.classList.add("active");
-    }
-
-    dot.addEventListener("click", () => {
-        showScene(index);
-    });
-
-    dots.appendChild(dot);
-
-});
-
-
-const allDots = [
-    ...document.querySelectorAll(".dot")
+const scenes = [
+    ...document.querySelectorAll(".scene")
 ];
 
+const indicators = [
+    ...document.querySelectorAll(
+        ".story-indicator span"
+    )
+];
+
+const progress =
+    document.getElementById("progress");
+
+const hearts =
+    document.getElementById("hearts");
+
+let current = 0;
+
+let timer = null;
+
 
 
 /* =========================
-   SHOW SCENE
+   SCENE CHANGE
 ========================= */
 
 function showScene(number) {
 
-    number = Math.max(
-        0,
-        Math.min(
-            scenes.length - 1,
-            number
-        )
-    );
+    if (number < 0) {
+        number = 0;
+    }
+
+    if (number >= scenes.length) {
+        number = scenes.length - 1;
+    }
 
 
-    scenes[currentScene]
-        .classList
-        .remove("active");
+    clearTimeout(timer);
 
 
-    allDots[currentScene]
-        .classList
-        .remove("active");
+    scenes.forEach((scene, index) => {
+
+        scene.classList.toggle(
+            "active",
+            index === number
+        );
+
+    });
 
 
-    currentScene = number;
+    indicators.forEach((indicator, index) => {
+
+        indicator.classList.toggle(
+            "active",
+            index <= number
+        );
+
+    });
 
 
-    scenes[currentScene]
-        .classList
-        .add("active");
+    current = number;
 
 
-    allDots[currentScene]
-        .classList
-        .add("active");
-
-
-    /* Progress bar */
+    /* Progress */
 
     const percentage =
-        (currentScene /
+        (current /
         (scenes.length - 1)) * 100;
 
     progress.style.width =
         percentage + "%";
 
 
-    /* Reset timer */
+    /* Hearts */
 
-    clearTimeout(timer);
-
-
-    if (currentScene < scenes.length - 1) {
-
-        timer = setTimeout(
-
-            () => {
-                showScene(currentScene + 1);
-            },
-
-            Number(
-                scenes[currentScene]
-                .dataset.time
-            )
-
-        );
-
+    if (current > 0) {
+        createHearts(2);
     }
 
 
-    /* Final scene */
+    /*
+       Automatically move through
+       the story after a while.
+    */
 
-    if (currentScene === scenes.length - 1) {
+    if (
+        current > 0 &&
+        current < scenes.length - 1
+    ) {
 
-        createHearts(8);
+        timer = setTimeout(() => {
+
+            showScene(current + 1);
+
+        }, 12000);
 
     }
 
@@ -123,11 +101,11 @@ function showScene(number) {
 
 
 /* =========================
-   START BUTTON
+   START
 ========================= */
 
 document
-    .querySelector(".start")
+    .getElementById("start")
     .addEventListener("click", () => {
 
         showScene(1);
@@ -137,59 +115,25 @@ document
 
 
 /* =========================
-   NEXT BUTTON
+   CONVERSATIONAL BUTTONS
 ========================= */
 
-document
-    .getElementById("next")
-    .addEventListener("click", () => {
-
-        showScene(currentScene + 1);
-
-    });
+const nextButtons =
+    document.querySelectorAll(".next");
 
 
+nextButtons.forEach(button => {
 
-/* =========================
-   PREVIOUS BUTTON
-========================= */
+    button.addEventListener(
+        "click",
+        () => {
 
-document
-    .getElementById("prev")
-    .addEventListener("click", () => {
-
-        showScene(currentScene - 1);
-
-    });
-
-
-
-/* =========================
-   KEYBOARD CONTROL
-========================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "ArrowRight" ||
-            event.key === " "
-        ) {
-
-            showScene(currentScene + 1);
+            showScene(current + 1);
 
         }
+    );
 
-
-        if (event.key === "ArrowLeft") {
-
-            showScene(currentScene - 1);
-
-        }
-
-    }
-);
+});
 
 
 
@@ -197,10 +141,10 @@ document.addEventListener(
    CREATE STARS
 ========================= */
 
-for (let i = 0; i < 90; i++) {
+for (let i = 0; i < 70; i++) {
 
     const star =
-        document.createElement("i");
+        document.createElement("span");
 
     star.className = "star";
 
@@ -226,12 +170,12 @@ for (let i = 0; i < 90; i++) {
 
 
 /* =========================
-   CREATE HEARTS
+   HEARTS
 ========================= */
 
-function createHearts(number = 2) {
+function createHearts(amount = 2) {
 
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < amount; i++) {
 
         const heart =
             document.createElement("span");
@@ -262,12 +206,10 @@ function createHearts(number = 2) {
 
 
         heart.style.animationDelay =
-            Math.random() * 1.2 + "s";
+            Math.random() * 1.5 + "s";
 
 
-        document
-            .getElementById("hearts")
-            .appendChild(heart);
+        hearts.appendChild(heart);
 
 
         setTimeout(() => {
@@ -283,21 +225,21 @@ function createHearts(number = 2) {
 
 
 /* =========================
-   CONTINUOUS HEARTS
+   RANDOM HEARTS
 ========================= */
 
 setInterval(() => {
 
     if (
-        currentScene === 0 ||
-        currentScene === scenes.length - 1
+        current === 0 ||
+        current === scenes.length - 1
     ) {
 
         createHearts(1);
 
     }
 
-}, 1000);
+}, 1200);
 
 
 
@@ -313,6 +255,16 @@ document
             document.getElementById("burst");
 
 
+        const symbols = [
+            "❤️",
+            "💕",
+            "💖",
+            "💗",
+            "✨",
+            "🌸"
+        ];
+
+
         for (let i = 0; i < 70; i++) {
 
             const particle =
@@ -321,17 +273,6 @@ document
 
             particle.className =
                 "confetti";
-
-
-            const symbols = [
-                "❤️",
-                "💖",
-                "💕",
-                "✨",
-                "🌸",
-                "🎉",
-                "💗"
-            ];
 
 
             particle.textContent =
@@ -345,30 +286,35 @@ document
 
             particle.style.setProperty(
                 "--x",
-                (Math.random() * 1100 - 550) + "px"
+                (Math.random() * 700 - 350)
+                + "px"
             );
 
 
             particle.style.setProperty(
                 "--y",
-                (Math.random() * 850 - 425) + "px"
+                (Math.random() * 900 - 450)
+                + "px"
             );
 
 
             particle.style.setProperty(
                 "--r",
-                (Math.random() * 900 - 450) + "deg"
+                (Math.random() * 720 - 360)
+                + "deg"
             );
 
 
-            burst.appendChild(particle);
+            burst.appendChild(
+                particle
+            );
 
 
             setTimeout(() => {
 
                 particle.remove();
 
-            }, 3000);
+            }, 2800);
 
         }
 
@@ -376,13 +322,13 @@ document
         document
             .getElementById("finalTitle")
             .textContent =
-            "A Beautiful Beginning ❤️";
+            "Then let's make it happen ❤️";
 
 
         document
             .getElementById("finalText")
             .textContent =
-            "And this little story gets a brand new chapter.";
+            "The next chapter is waiting for us.";
 
 
         document
@@ -413,31 +359,41 @@ document
    MAYBE BUTTON
 ========================= */
 
-document
-    .getElementById("no")
-    .addEventListener(
-        "mouseenter",
-        () => {
-
-            const button =
-                document.getElementById("no");
+const maybe =
+    document.getElementById("no");
 
 
-            button.style.position =
-                "relative";
+function moveMaybe() {
+
+    const x =
+        Math.random() * 100 - 50;
+
+    const y =
+        Math.random() * 80 - 40;
 
 
-            button.style.left =
-                (Math.random() * 180 - 90) +
-                "px";
+    maybe.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+}
 
 
-            button.style.top =
-                (Math.random() * 120 - 60) +
-                "px";
+maybe.addEventListener(
+    "mouseenter",
+    moveMaybe
+);
 
-        }
-    );
+
+maybe.addEventListener(
+    "touchstart",
+    (event) => {
+
+        event.preventDefault();
+
+        moveMaybe();
+
+    }
+);
 
 
 
@@ -447,16 +403,19 @@ document
 
 document
     .getElementById("again")
-    .addEventListener("click", () => {
+    .addEventListener(
+        "click",
+        () => {
 
-        location.reload();
+            location.reload();
 
-    });
+        }
+    );
 
 
 
 /* =========================
-   START
+   START SCENE
 ========================= */
 
 showScene(0);
