@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:#10051c;color:white;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 20% 20%,rgba(255,74,143,.25),transparent 30%),radial-gradient(circle at 80% 30%,rgba(174,80,255,.25),transparent 30%),radial-gradient(circle at 50% 90%,rgba(255,72,112,.20),transparent 35%),linear-gradient(135deg,#10051c,#24072f,#15051f)}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:-2}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.7;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:1;transform:scale(1.4)}}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.heart{position:absolute;bottom:-50px;animation:floatHeart linear forwards;opacity:.8}
+@keyframes floatHeart{0%{transform:translateY(0) scale(.6) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-110vh) scale(1.2) rotate(25deg);opacity:0}}
+section{min-height:100vh;padding:90px 20px;display:flex;align-items:center;justify-content:center}
+.container{width:min(1000px,94%);margin:auto;text-align:center}
+.script{font-family:'Great Vibes',cursive}.serif{font-family:'Cormorant Garamond',serif}
+.moon{width:100px;height:100px;border-radius:50%;background:#fff3fb;margin:0 auto 35px;box-shadow:0 0 25px rgba(255,255,255,.7),0 0 70px rgba(255,160,220,.35)}
+.hero-small{font-size:15px;letter-spacing:4px;text-transform:uppercase;opacity:.7}
+.hero h1{font-family:'Great Vibes',cursive;font-size:clamp(65px,13vw,140px);line-height:1;margin:20px 0;background:linear-gradient(90deg,#fff,#ff9bc5,#ffd0e5);-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:auto;font-family:'Cormorant Garamond',serif;font-size:25px;opacity:.85}
+.glow-btn{margin-top:40px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:white;padding:15px 32px;border-radius:50px;cursor:pointer;font-size:15px;transition:.3s;backdrop-filter:blur(10px)}
+.glow-btn:hover{transform:scale(1.06);background:rgba(255,105,160,.25);box-shadow:0 0 30px rgba(255,80,150,.35)}
+.story-card{max-width:700px;margin:auto;padding:45px;border:1px solid rgba(255,255,255,.12);border-radius:30px;background:rgba(255,255,255,.06);backdrop-filter:blur(15px);box-shadow:0 20px 80px rgba(0,0,0,.25)}
+.story-card h2{font-size:48px;margin-bottom:20px}.story-card p{font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.7}
+.reveal{opacity:0;transform:translateY(30px);transition:1s}.reveal.show{opacity:1;transform:translateY(0)}
+.flowers{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:45px}
+.flower{padding:30px 15px;border-radius:25px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:.3s}
+.flower:hover{transform:translateY(-8px);background:rgba(255,100,170,.12)}
+.flower-icon{font-size:55px;margin-bottom:15px}.flower p{display:none;font-family:'Cormorant Garamond',serif;font-size:20px;margin-top:15px}
+.flower.open p{display:block;animation:fade .5s}@keyframes fade{from{opacity:0}to{opacity:1}}
+.gift-area{cursor:pointer;margin-top:40px}.gift{font-size:110px;transition:.5s}.gift:hover{transform:scale(1.1) rotate(-3deg)}
+.gift-message{max-width:650px;margin:30px auto 0;display:none;font-family:'Great Vibes',cursive;font-size:48px;color:#ffb3d1}
+.gift-message.show{display:block;animation:revealGift 1s}@keyframes revealGift{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+.proposal h2{font-family:'Cormorant Garamond',serif;font-size:clamp(35px,7vw,65px)}
+.proposal-question{font-family:'Great Vibes',cursive;font-size:clamp(60px,12vw,120px);margin:25px 0;background:linear-gradient(90deg,#ffb0ce,#fff,#ff82b4);-webkit-background-clip:text;color:transparent}
+.buttons{position:relative;min-height:150px;display:flex;justify-content:center;align-items:center;gap:25px}
+.yes-btn,.maybe-btn{border:none;padding:17px 38px;border-radius:50px;font-size:17px;cursor:pointer;transition:.3s}
+.yes-btn{background:linear-gradient(135deg,#ff4f91,#ff1f67);color:white;box-shadow:0 10px 35px rgba(255,30,100,.35)}.yes-btn:hover{transform:scale(1.1)}
+.maybe-btn{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.2)}
+.success{display:none}.success.show{display:block;animation:success .8s}
+.success h3{font-family:'Great Vibes',cursive;font-size:clamp(55px,10vw,100px);color:#ffb5d2}
+.success p{font-family:'Cormorant Garamond',serif;font-size:25px;margin-top:20px}
+@keyframes success{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+footer{text-align:center;padding:35px 20px;opacity:.65;font-size:13px}
+@media(max-width:700px){section{padding:70px 15px}.story-card{padding:30px 20px}.flowers{grid-template-columns:1fr}.hero p{font-size:21px}.buttons{flex-direction:column}.maybe-btn{position:relative}}
+</style>
+</head>
+<body>
+<div id="stars"></div><div id="hearts"></div>
+
+<section class="hero">
+<div class="container">
+<div class="moon"></div>
+<div class="hero-small">I made something special for you</div>
+<h1>For You ❤️</h1>
+<p>Some things are too beautiful to say in a simple message... so I made you a little world instead.</p>
+<button class="glow-btn" id="beginBtn">Open My Heart 💌</button>
+</div>
+</section>
+
+<section id="story">
+<div class="container">
+<div class="story-card reveal">
+<div class="script" style="font-size:55px">Our little story</div>
+<h2 class="serif">Somehow, among billions of people...</h2>
+<p>Our paths crossed. And somewhere between the conversations, the smiles, the silly moments and the unforgettable ones, you became someone incredibly special to me.</p>
+<br>
+<p>I don't know exactly when it happened... but my heart started choosing you.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="script" style="font-size:60px">A few things I love about you</div>
+<p style="opacity:.7;margin-top:10px">Tap the flowers 🌷</p>
+<div class="flowers">
+<div class="flower"><div class="flower-icon">🌹</div><strong>Your Smile</strong><p>Somehow your smile can make an ordinary day feel like my favorite day.</p></div>
+<div class="flower"><div class="flower-icon">🌷</div><strong>Your Heart</strong><p>Your kindness is one of the things that makes you unforgettable.</p></div>
+<div class="flower"><div class="flower-icon">🌸</div><strong>You</strong><p>Not because you're perfect, but because you're perfectly you.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="script" style="font-size:65px">I have one more surprise...</div>
+<p style="opacity:.7;margin-top:10px">Tap the gift 🎁</p>
+<div class="gift-area" id="gift"><div class="gift">🎁</div></div>
+<div class="gift-message" id="giftMessage">You are the most beautiful chapter I never want to end. ❤️</div>
+</div>
+</section>
+
+<section class="proposal">
+<div class="container">
+<div id="question">
+<h2>And now...</h2>
+<div class="proposal-question">Will you be mine? ❤️</div>
+<div class="buttons">
+<button class="yes-btn" id="yesBtn">YES ❤️</button>
+<button class="maybe-btn" id="maybeBtn">Maybe...</button>
+</div>
+</div>
+<div class="success" id="success">
+<h3>You said YES! ❤️</h3>
+<p>And just like that, my favorite story got its happiest beginning.</p>
+<p style="margin-top:35px">Here's to us. 🥂</p>
+</div>
+</div>
+</section>
+
+<footer>Made with ❤️ and a little bit of courage.</footer>
+
+<script>
+const stars=document.getElementById("stars");
+for(let i=0;i<120;i++){
+ const star=document.createElement("div");star.className="star";
+ star.style.left=Math.random()*100+"%";star.style.top=Math.random()*100+"%";
+ star.style.animationDelay=Math.random()*3+"s";stars.appendChild(star);
+}
+const hearts=document.getElementById("hearts");
+function createHeart(){
+ const heart=document.createElement("div");heart.className="heart";
+ const emojis=["❤️","💗","💕","💖","💘"];
+ heart.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+ heart.style.left=Math.random()*100+"%";heart.style.fontSize=12+Math.random()*25+"px";
+ heart.style.animationDuration=5+Math.random()*6+"s";hearts.appendChild(heart);
+ setTimeout(()=>heart.remove(),12000);
+}
+setInterval(createHeart,900);
+
+document.getElementById("beginBtn").addEventListener("click",()=>document.getElementById("story").scrollIntoView({behavior:"smooth"}));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show")}),{threshold:.2});
+document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));
+
+document.querySelectorAll(".flower").forEach(flower=>flower.addEventListener("click",()=>flower.classList.toggle("open")));
+
+document.getElementById("gift").addEventListener("click",()=>{
+ document.getElementById("giftMessage").classList.add("show");
+ for(let i=0;i<15;i++)setTimeout(createHeart,i*80);
+});
+
+const maybe=document.getElementById("maybeBtn");let maybeCount=0;
+function moveMaybe(){
+ maybeCount++;
+ if(window.innerWidth>700){
+  const x=Math.random()*240-120,y=Math.random()*120-60;
+  maybe.style.transform=`translate(${x}px,${y}px)`;
+ }
+ if(maybeCount>3)maybe.textContent="Are you sure? 🥺";
+ if(maybeCount>6)maybe.textContent="Just say YES ❤️";
+}
+maybe.addEventListener("mouseenter",moveMaybe);maybe.addEventListener("click",moveMaybe);
+
+document.getElementById("yesBtn").addEventListener("click",()=>{
+ document.getElementById("question").style.display="none";
+ document.getElementById("success").classList.add("show");
+ celebrate();
+});
+
+function celebrate(){
+ const emojis=["❤️","💖","💕","💗","💘","🌹","✨","🥰"];
+ for(let i=0;i<80;i++)setTimeout(()=>{
+  const heart=document.createElement("div");heart.className="heart";
+  heart.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  heart.style.left=Math.random()*100+"%";heart.style.fontSize=15+Math.random()*35+"px";
+  heart.style.animationDuration=3+Math.random()*4+"s";hearts.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+ },i*40);
+}
+</script>
+</body>
+</html>
