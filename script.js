@@ -96,17 +96,23 @@ function showScene(number) {
 /* START BUTTON */
 /* ================================= */
 
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
 document
     .getElementById("start")
-    .addEventListener(
-        "click",
-        () => {
+    .addEventListener("click", async () => {
 
-            showScene(1);
+        showScene(1);
 
+        try {
+            backgroundMusic.volume = 0.65;
+            await backgroundMusic.play();
+        } catch (error) {
+            console.log("Music playback was blocked by the browser.");
         }
-    );
 
+    });
 
 /* ================================= */
 /* NEXT BUTTONS */
